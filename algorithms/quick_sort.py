@@ -17,11 +17,11 @@ import random
 
 
 def qsort(lst):
-    if len(lst) >= 2:
+    if len(lst) > 1:
         reference_element = lst[random.randint(0, len(lst)-1)]
-        less = list(filter(lambda x: x < reference_element, lst))
+        less = [i for i in lst if i < reference_element]
         middle = [i for i in lst if i == reference_element]
-        more = list(filter(lambda x: x > reference_element, lst))
+        more = [i for i in lst if i > reference_element]
         
         return qsort(less) + middle + qsort(more)
     else:

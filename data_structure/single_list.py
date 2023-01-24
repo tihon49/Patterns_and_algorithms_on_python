@@ -32,6 +32,11 @@ class SingleLinkedList:
         node = self.head
         prev_node = self.head
 
+        if index == 0:
+            node = self.head
+            self.head = self.Node(element, node)
+            return
+
         while index > c_index:
             prev_node = node
             node = node.next_node 

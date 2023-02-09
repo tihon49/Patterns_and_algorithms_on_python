@@ -98,7 +98,7 @@ PersonXML, который наследуется от класса PersonStorage
 ```python
 class PersonXML(PersonStorage):
     def save(self, person):
-        print(f'Save the {person} to a JSON file')
+        print(f'Save the {person} to a XML file')
 ```
 
 И вы можете сохранить объект Person в XML-файл с помощью класса PersonXML:
@@ -154,6 +154,11 @@ if __name__ == '__main__':
     storage = PersonJSON()
     storage.save(person)
 ```
+
+    # Вывод
+    Save the Person(name=John Doe) to a XML file
+    Save the Person(name=John Doe) to a JSON file
+
 
 
 

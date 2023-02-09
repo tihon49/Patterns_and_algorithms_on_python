@@ -1,18 +1,30 @@
+"""
+TODO:
+    - tail
+    - метод delete
+    - метод clear
+    - __iter__
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Optional
 
 
 
+@dataclass
 class SingleLinkedList:
-    head = None
+    head: Optional[Node] = None
+    length: int = 0
 
+    @dataclass
     class Node:
-        element = None
-        next_node = None
+        element: Any = None
+        next_node: Optional[SingleLinkedList.Node] = None
 
-        def __init__(self, element, next_node=None):
-            self.element = element
-            self.next_node = next_node
-
-    def add(self, element):
+    def append(self, element):
+        self.length += 1
         if not self.head:
             self.head = self.Node(element)
             return
@@ -27,6 +39,8 @@ class SingleLinkedList:
         if not self.head:
             print('There is no such index')
             return
+        
+        self.length += 1
 
         c_index = 0
         node = self.head
@@ -48,6 +62,8 @@ class SingleLinkedList:
         if not self.head:
             print('No data to pop')
             return
+
+        self.length -= 1
 
         node = self.head
 
@@ -77,11 +93,11 @@ class SingleLinkedList:
 
 
 lst = SingleLinkedList()
-lst.add(1)
-lst.add(2)
-lst.add(3)
-lst.add(4)
-lst.add(5)
+lst.append(1)
+lst.append(2)
+lst.append(3)
+lst.append(4)
+lst.append(5)
 lst.print()
 
 print('#########')

@@ -25,7 +25,7 @@ def get_money(price: int, money_nomenal: dict) -> dict:
     return {k: v for k, v in money_nomenal.items() if v > 0}
 
 
-def main()
+def main():
     price = int(input('Введите цену (integer): '))
     money_nomenal = {
         100: 0,

@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-
 """
 В данном примере паттерна МОСТ наследники класса Remote() (пульт) выступают в качестве интерфейсов,
 а наследники класса Device() (устройство) выступают в качестве реализации.
@@ -74,7 +73,7 @@ class BaseDevice(Device):
         self.channel = value
 
 
-class Remote():
+class Remote:
     """класс интерфейс (пульт)"""
 
     def __init__(self, device: BaseDevice()):
@@ -101,11 +100,13 @@ class Remote():
 
 class Tv(BaseDevice):
     """базовая реализация для устройства - телевизор"""
+
     pass
 
 
 class Radio(BaseDevice):
     """базовая реализация для устройства - радио"""
+
     pass
 
 
@@ -123,43 +124,44 @@ def base_foo():
     radio_remote = Remote(radio)
 
     # Tv
-    print('Базовое состояние устройства Tv:')
-    print('tv.power:', tv.power)
-    print('tv.volumeLevel:', tv.volumeLevel)
-    print('tv.channel:', tv.channel)
+    print("Базовое состояние устройства Tv:")
+    print("tv.power:", tv.power)
+    print("tv.volumeLevel:", tv.volumeLevel)
+    print("tv.channel:", tv.channel)
     print()
 
     tv_remote.togglePower()
     tv_remote.volumeDown()
     tv_remote.channelUp()
 
-    print('Измененное состояние устройства Tv:')
-    print('tv.power:', tv.power)
-    print('tv.volumeLevel:', tv.volumeLevel)
-    print('tv.channel:', tv.channel)
+    print("Измененное состояние устройства Tv:")
+    print("tv.power:", tv.power)
+    print("tv.volumeLevel:", tv.volumeLevel)
+    print("tv.channel:", tv.channel)
     print()
 
     ##### Radio ######
-    print('Базовое состояние устройства Radio:')
-    print('radio.power:', radio.power)
-    print('radio.volumeLevel:', radio.volumeLevel)
-    print('radio.channel:', radio.channel)
+    print("Базовое состояние устройства Radio:")
+    print("radio.power:", radio.power)
+    print("radio.volumeLevel:", radio.volumeLevel)
+    print("radio.channel:", radio.channel)
     print()
 
     radio_remote.togglePower()
     radio_remote.volumeUp()
     radio_remote.channelUp()
 
-    print('Измененное состояние устройства Radio:')
-    print('radio.power:', radio.power)
-    print('radio.volumeLevel:', radio.volumeLevel)
-    print('radio.channel:', radio.channel)
+    print("Измененное состояние устройства Radio:")
+    print("radio.power:", radio.power)
+    print("radio.volumeLevel:", radio.volumeLevel)
+    print("radio.channel:", radio.channel)
     print()
 
 
 base_foo()
 
 ###########################РАСШИРЕННЫЙ ФУНКЦИОНАЛ################################
+
 
 class AdvancedRemote(Remote):
     """Расширенный вариант пульта"""
@@ -180,26 +182,26 @@ def advanced_foo():
     # создаём расширенный пульт для устройства (интерфейс)
     tv_advanced_remote = AdvancedRemote(tv)
 
-    print('#' * 20, 'РАСШИРЕННЫЙ ФУНКЦИОНАЛ' , '#' * 20)
-    print('Базовое состояние устройства Tv:')
-    print('tv.power:', tv.power)
-    print('tv.volumeLevel:', tv.volumeLevel)
-    print('tv.channel:', tv.channel)
+    print("#" * 20, "РАСШИРЕННЫЙ ФУНКЦИОНАЛ", "#" * 20)
+    print("Базовое состояние устройства Tv:")
+    print("tv.power:", tv.power)
+    print("tv.volumeLevel:", tv.volumeLevel)
+    print("tv.channel:", tv.channel)
     print()
 
     tv_advanced_remote.togglePower()
     tv_advanced_remote.volumeDown()
     tv_advanced_remote.channelUp()
 
-    print('Измененное состояние устройства Tv:')
-    print('tv.power:', tv.power)
-    print('tv.volumeLevel:', tv.volumeLevel)
-    print('tv.channel:', tv.channel)
+    print("Измененное состояние устройства Tv:")
+    print("tv.power:", tv.power)
+    print("tv.volumeLevel:", tv.volumeLevel)
+    print("tv.channel:", tv.channel)
     print()
 
-    print('Теперь воспользуемся расширенным функционалом нового пульта:')
+    print("Теперь воспользуемся расширенным функционалом нового пульта:")
     tv_advanced_remote.mute()
-    print('tv.volumeLevel:', tv.volumeLevel)
+    print("tv.volumeLevel:", tv.volumeLevel)
 
 
 advanced_foo()

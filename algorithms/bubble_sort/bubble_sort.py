@@ -5,11 +5,11 @@
 Сложность: O(n^2)
 """
 
-lst = [3, 2, 6, 1, 7, 4 ,9, 0, 5, 8]
+lst = [3, 2, 6, 1, 7, 4, 9, 0, 5, 8]
 
-for _ in range(len(lst) -1):
-    for i in range(len(lst)-1):
-        if lst[i] > lst[i+1]:
-            lst[i], lst[i+1] = lst[i+1], lst[i]
+for _ in range(len(lst) - 1):
+    for i in range(len(lst) - 1):
+        if lst[i] > lst[i + 1]:
+            lst[i], lst[i + 1] = lst[i + 1], lst[i]
 
 print(lst)

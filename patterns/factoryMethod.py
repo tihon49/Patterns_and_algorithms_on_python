@@ -1,7 +1,8 @@
 # https://realpython.com/factory-method-python/
 
-import xml.etree.ElementTree as et
 import json
+import xml.etree.ElementTree as et
+
 import yaml
 
 
@@ -12,14 +13,14 @@ class Song:
         self.song_id = song_id
         self.title = title
         self.artist = artist
-        self.year = year if year else 'Not added'
+        self.year = year if year else "Not added"
 
     def serialize(self, serializer):
         """методо среиализации"""
-        serializer.start_object('song', self.song_id)
-        serializer.add_property('title', self.title)
-        serializer.add_property('artist', self.artist)
-        serializer.add_property('year', self.year)
+        serializer.start_object("song", self.song_id)
+        serializer.add_property("title", self.title)
+        serializer.add_property("artist", self.artist)
+        serializer.add_property("year", self.year)
 
 
 class JsonSerializer:
@@ -32,9 +33,7 @@ class JsonSerializer:
         self._current_object = None
 
     def start_object(self, object_name, object_id):
-        self._current_object = {
-            'id': object_id
-        }
+        self._current_object = {"id": object_id}
 
     def add_property(self, name, value):
         self._current_object[name] = value
@@ -53,14 +52,14 @@ class XmlSerializer:
         self._element = None
 
     def start_object(self, object_name, object_id):
-        self._element = et.Element(object_name, attrib={'id': object_id})
+        self._element = et.Element(object_name, attrib={"id": object_id})
 
     def add_property(self, name, value):
         prop = et.SubElement(self._element, name)
         prop.text = value
 
     def to_str(self):
-        return et.tostring(self._element, encoding='unicode')
+        return et.tostring(self._element, encoding="unicode")
 
 
 class YamlSerializer(JsonSerializer):
@@ -86,7 +85,7 @@ class SerializerFactory:
         if not self._creators.get(format):
             self._creators[format] = creator
         else:
-            print(f'Формат {format} уже зарегистрирован')
+            print(f"Формат {format} уже зарегистрирован")
 
     def get_serializer(self, format):
         format = str(format).lower()
@@ -105,30 +104,30 @@ class ObjectSerializer:
     """
 
     def serialize(self, serializable, format):
-        serializer = SerializerFactory().get_serializer(format) # concrete serializer object
+        serializer = SerializerFactory().get_serializer(
+            format
+        )  # concrete serializer object
         serializable.serialize(serializer)
         return serializer.to_str()
 
 
-
 def main():
     # регистрируем форматы в фабрике сериализаторов
-    SerializerFactory().register_format('JSON', JsonSerializer)
-    SerializerFactory().register_format('XML', XmlSerializer)
-    SerializerFactory().register_format('YAML', YamlSerializer)
+    SerializerFactory().register_format("JSON", JsonSerializer)
+    SerializerFactory().register_format("XML", XmlSerializer)
+    SerializerFactory().register_format("YAML", YamlSerializer)
 
     # создаем объект песни
-    song = Song('1', 'Water of Love', 'Dire Straits', '1985')
+    song = Song("1", "Water of Love", "Dire Straits", "1985")
 
     # создаем объектную фабрику, которая внутри метода .serialize будет обращаться
     # к SerializerFactory и брать сериализатор согласно переданному формату
     serializer = ObjectSerializer()
 
-    print(serializer.serialize(song, 'JSON'))
-    print(serializer.serialize(song, 'XML'))
-    print(serializer.serialize(song, 'YAML'))
+    print(serializer.serialize(song, "JSON"))
+    print(serializer.serialize(song, "XML"))
+    print(serializer.serialize(song, "YAML"))
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

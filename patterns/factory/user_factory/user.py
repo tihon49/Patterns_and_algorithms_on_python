@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 
-
 class IUser(ABC):
     def __init__(self, *args, **kwargs):
        self.username = kwargs.pop('username', None)

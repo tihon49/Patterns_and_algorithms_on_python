@@ -15,17 +15,18 @@
     
 """
 
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 
 db = SQLAlchemy(app)
 
+
 class User(db.Model):
     """user test model"""
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(25), unique=True)
     password = db.Column(db.String(64), nullable=True)
@@ -34,11 +35,10 @@ class User(db.Model):
         return f"<user {self.id} : {self.name}>"
 
 
-@app.route('/')
+@app.route("/")
 def index():
-    return {'data': 'test'}
+    return {"data": "test"}
 
 
-if __name__ == '__main__':
-    app.run(debug = True)
-
+if __name__ == "__main__":
+    app.run(debug=True)

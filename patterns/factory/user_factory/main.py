@@ -1,6 +1,5 @@
 from factory import UserFactory
 
-
 user_data = {
     'username': 'John',
     'password': 'password',

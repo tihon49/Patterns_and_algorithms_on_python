@@ -25,6 +25,7 @@ class SMS(Notification):
 
 class Contact:
     """Класс контакта"""
+
     def __init__(self, name, email, phone):
         self.name = name
         self.email = email
@@ -34,7 +35,7 @@ class Contact:
 class NotificationManager:
     def __init__(self, notification):
         self.notification = notification
-    
+
     def set_notification(self, notification):
         self.notification = notification
 
@@ -42,18 +43,14 @@ class NotificationManager:
         self.notification.notify(message)
 
 
-if __name__ == '__main__':
-    contact = Contact(
-        name='John Doe',
-        email='john@test.com',
-        phone='(408)-888-9999'
-    )
+if __name__ == "__main__":
+    contact = Contact(name="John Doe", email="john@test.com", phone="(408)-888-9999")
 
     sms_notification = SMS(contact.phone)
     email_notification = Email(contact.email)
 
     notification_manager = NotificationManager(sms_notification)
-    notification_manager.send('Hello John')
+    notification_manager.send("Hello John")
 
     notification_manager.set_notification(email_notification)
-    notification_manager.send('Hi John')
+    notification_manager.send("Hi John")

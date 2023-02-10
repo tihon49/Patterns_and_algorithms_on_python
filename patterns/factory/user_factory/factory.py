@@ -1,4 +1,4 @@
-from user import User, Admin, Support
+from user import Admin, Support, User
 
 
 class UserFactory:
@@ -12,7 +12,7 @@ class UserFactory:
         user_role = data.get('role', None)
         if not user_role:
             raise Exception("No user role specified")
-        if not user_role in self._user_factorys.keys():
+        if user_role not in self._user_factorys.keys():
             raise Exception("Wrang user role specified")
         
         factory = self._user_factorys[user_role]

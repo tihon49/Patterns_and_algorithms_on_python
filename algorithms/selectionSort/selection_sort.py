@@ -8,7 +8,7 @@ Selection sort (сортировка выбором)
 """
 
 
-lst_to_sort = [4,2,3,6,9,0,7,1,5,8]
+lst_to_sort = [4, 2, 3, 6, 9, 0, 7, 1, 5, 8]
 
 
 def selection_sort(lst: list) -> list:
@@ -31,4 +31,3 @@ def selection_sort(lst: list) -> list:
 
 sorted_list = selection_sort(lst_to_sort)
 print(sorted_list)
-

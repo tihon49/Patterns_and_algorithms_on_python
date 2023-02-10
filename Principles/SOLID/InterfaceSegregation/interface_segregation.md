@@ -72,7 +72,7 @@ Vehicle, который класс Car не использует.
 </div>
 
 Во-первых, разделим интерфейс Vehicle на два меньших интерфейса:
-Movable и Flyable, и наследуем класс Movable в классу Flyable:
+Movable и Flyable, и наследуем класс Movable в классе Flyable:
 
 ```python
 class Movable(ABC):

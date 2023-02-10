@@ -193,3 +193,7 @@ if __name__ == '__main__':
     notification_manager.send('Hi John')
 ```
 
+    # Вывод
+    Send "Hello John" to (408)-888-9999
+    Send "Hi John" to john@test.com
+

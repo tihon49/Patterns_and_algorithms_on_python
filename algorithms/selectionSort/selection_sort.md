@@ -14,16 +14,14 @@ def selection_sort(lst: list) -> list:
     lst_lenght = len(lst)
 
     for i in range(lst_lenght - 1):
-        min = lst[i]
-        index = i
+        min_index = i
 
         for j in range(i+1, lst_lenght):
-            if min > lst[j]:
-                min = lst[j]
-                index = j
+            if lst[j] < lst[min_index]:
+                min_index = j
 
-        if index != i:
-            lst[i], lst[index] = lst[index], lst[i]
+        if min_index != i:
+            lst[i], lst[min_index] = lst[min_index], lst[i]
 
     return lst
 
